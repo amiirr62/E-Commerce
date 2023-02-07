@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+        body {
+            background-image: url('/pics/products.jpg');
+        }
+    </style>
+    <link rel="stylesheet"  href="/css/main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+</head>
+<body>
+    <form action="/products" method="POST">
+        <input type="number" placeholder="UPI" name="UPI">
+        <input type="text" placeholder="name" name="name">
+
+        <select name="department">
+            <option value="Electronic Devices" name="Electronic Devices" selected>ElectronicDevices</option>
+            <option value="Stationary" name="Stationary">Stationary</option>
+            <option value="Books" name="Books">Books</option>
+            <option value="Clothing" name="Clothing">Clothing</option>
+        </select>
+
+
+        
+        <input type="text" placeholder="description" name="description">
+        <input type="number" placeholder="price" name="price">
+        <input type="submit" value="Add Product">
+    </form>
+    
+</body>
+</html>

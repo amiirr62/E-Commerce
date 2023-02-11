@@ -29,7 +29,7 @@ passport.use("local.signUp", new localStrategy(
         try {
             let user = await User.findOne({email : req.body.email})
             if (user){
-                return done(null, false)
+                return done(null, false,req.flash('errors','Already existed!!!'))
                 
             }
             const newUser = new User({

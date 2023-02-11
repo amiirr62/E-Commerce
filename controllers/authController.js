@@ -35,7 +35,7 @@ class authController {
         passport.authenticate('local.signUp',{
             successRedirect : '/dashboard',
             failureRedirect : '/auth/signUp',
-            failureFlash : true
+            failureFlash : false
 
           })(req,res,next)
               

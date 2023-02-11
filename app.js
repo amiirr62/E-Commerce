@@ -12,23 +12,22 @@ const MongoStore = require('connect-mongo')
 const app = express()
 
 global.config = require('./config')
+app.use(express.static(__dirname+'/public'))
+app.set('view engine','ejs')
 mongoose.connect('mongodb://127.0.0.1:27017/Ecommerce')
                 .then(() => console.log('MongoDB has been Connected!'))
+
 app.use(express.urlencoded({extended:false}))
 app.use(methodOverride('method'))
-app.use(express.static(__dirname+'/public'))
-app.use(express.urlencoded({extended:false}))
-app.set('view engine','ejs')
-app.use('/', require('./routes/0-index'))
-app.use(cookieParser('njcbtapobcrreygxzvnmaysl764k20723n24bkvsgsm'))
+app.use(cookieParser('njcbtapo9w1bcrreygxzvnmaysl764k20723n24bkv851sgsm'))
 
 app.use(session({
   secret: 'gsaiwqun6311b',
-  resave: true,
+  resave: false,
   saveUninitialized: true,
-  cookie : {expires : new Date(Date.now() + (1000 * 3600 * 24 * 100)) ,
+  /* cookie : {expires : new Date(Date.now() + (1000 * 3600 * 24 * 100)) ,
             store   : MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/Ecommerce' })
-           }
+           } */
 }))
 
 app.use(flash())  
@@ -38,7 +37,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-
+app.use('/', require('./routes/0-index'))
 
 
 app.use((req,res,next)=>{

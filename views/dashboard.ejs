@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        
+        body {
+            background-image: url('/pics/dashboard.jpg');
+        }
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <a href="auth/login">Logout</a>
-<h1>welcome to DASHBOARD!!</h1>
+    <a href="auth/login" style="color: deeppink;">Logout</a>
+   
+    <h1 style="color: deeppink;text-transform: capitalize;">Hi <%= req.user.name %></h1>
+    
 </body>
 </html>

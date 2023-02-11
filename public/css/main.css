@@ -4,3 +4,9 @@ h1{
     color: white;
     align-content: center;
 }
+
+a{
+    background-color: pink;
+    color: black;
+    display:flexbox;
+}

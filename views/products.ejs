@@ -14,10 +14,12 @@
     <title>HomePage</title>
 </head>
 <body>
+    <a href="/">Home Page | </a>
+    <a href="users">Users | </a>
+
     <form action="/products" method="POST">
         <input type="number" placeholder="UPI" name="UPI">
         <input type="text" placeholder="name" name="name">
-
         <select name="department">
             <option value="Electronic Devices" name="Electronic Devices" selected>ElectronicDevices</option>
             <option value="Stationary" name="Stationary">Stationary</option>
@@ -25,8 +27,6 @@
             <option value="Clothing" name="Clothing">Clothing</option>
         </select>
 
-
-        
         <input type="text" placeholder="description" name="description">
         <input type="number" placeholder="price" name="price">
         <input type="submit" value="Add Product">

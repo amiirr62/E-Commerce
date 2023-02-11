@@ -3,14 +3,14 @@ const { body } = require('express-validator')
 
 class authValidator extends validator {
     signUp(){
-        return [body('name','Enter your name').not().isEmpty(),
+        return [body('name','Name is required!!').not().isEmpty(),
                 body('email','Not a Valid Email!!').isEmail(),
-                body('password','Minimum length is 1 word.').isLength({ min: 1 })]
+                body('password','Password is required!!').isLength({ min: 1 })]
     }
 
     login(){
         return [body('email','Not a Valid Email!!').isEmail(),
-                body('password','Minimum length is 1 words.').isLength({ min: 1 })]
+                body('password','Password is required!!').isLength({ min: 1 })]
     }
 }
 

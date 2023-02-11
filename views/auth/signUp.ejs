@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/css/main.css">
     <style>
         
         body {
@@ -13,7 +14,7 @@
     <title>Register</title>
 </head>
 <body>
-    <%- include('../components/validationErrors') -%>
+    
     <a href="/">HomePage || </a>
     <a href="/users">Users || </a>
     <a href="/auth/login">Login || </a>
@@ -29,6 +30,8 @@
         <input type="submit" value="Sign Up">
    </form>
 </center>
+
+<%- include('../components/validationErrors') -%>
 
 </body>
 </html>

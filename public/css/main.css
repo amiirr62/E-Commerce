@@ -10,3 +10,18 @@ a{
     color: black;
     display:flexbox;
 }
+
+li.errors{
+   
+    background-color: black;
+    color: black;
+    display: table;
+    font-size: 2em;
+   font-family: serif;
+   color:red;
+   text-align: center;
+   
+ 
+    
+}
+

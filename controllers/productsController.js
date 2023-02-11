@@ -1,5 +1,7 @@
 const express = require('express')
 const Product = require('../models/products')
+const passport = require('passport')
+const { body, validationResult } = require('express-validator')
 
 
 class productController {
@@ -15,6 +17,12 @@ class productController {
 
    async  addProduct (req,res,next){
     try {
+        const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                let myErrors = errors.array()
+                req.flash('errors', myErrors)
+                return res.redirect('/products' )
+            }
         
             let newProduct = new Product ({
             

@@ -56,7 +56,13 @@ class authController {
 
     async login(req,res,next){
         try {
-            
+
+            const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                let myErrors = errors.array()
+                req.flash('errors', myErrors)
+                return res.redirect('/auth/login' )
+            }
             
             passport.authenticate('local.login', (err,user)=>{
                 if(!user) return res.redirect('/auth/login')

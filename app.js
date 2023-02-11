@@ -25,10 +25,10 @@ app.use(session({
   secret: 'gsaiwqun6311b',
   resave: false,
   saveUninitialized: true,
-  /* cookie : {expires : new Date(Date.now() + (1000 * 3600 * 24 * 100)) ,
+ cookie : {expires : new Date(Date.now() + (1000 * 3600 * 24 * 100)) ,
             store   : MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/Ecommerce' })
-           } */
-}))
+           
+}}))
 
 app.use(flash())  
 
@@ -37,14 +37,15 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-app.use('/', require('./routes/0-index'))
-
-
 app.use((req,res,next)=>{
   res.locals = {errors : req.flash('errors'), req }     ///We access to req in all views
   next()
 })
 
+
+
+
+  app.use('/', require('./routes/0-index'))
 
   app.listen(config.port, ()=>{
     console.log(`App is running on port ${config.port}`)

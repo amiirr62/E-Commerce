@@ -1,6 +1,7 @@
 const passport = require('passport')
 const localStrategy = require('passport-local').Strategy
 const User = require('../models/users')
+const bcrypt = require('bcryptjs')
 
 
 
@@ -37,7 +38,7 @@ passport.use("local.signUp", new localStrategy(
                 lname : req.body.lname,
                 birthday:req.body.birthday,
                 email: req.body.email,
-                password:  req.body.password,
+                password: bcrypt.hashSync(req.body.password, 8) 
             })
 
             await newUser.save()
@@ -60,7 +61,7 @@ passport.use("local.login", new localStrategy(
    try {
     let user = await User.findOne({email : req.body.email})
 
-    if(!user || user.password != req.body.password){
+    if(!user ||  !bcrypt.compareSync(req.body.password, user.password) ){
         return done(null, false, req.flash('errors','Authentication failed!! '))
     }
 

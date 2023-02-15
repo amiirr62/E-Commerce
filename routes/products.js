@@ -9,6 +9,7 @@ router.use((req,res,next)=>{
     if(req.isAuthenticated()){
         return next()
     }
+    req.flash('errors', 'You need to LogIn first!!')
     res.redirect('/auth/login')
 })
 

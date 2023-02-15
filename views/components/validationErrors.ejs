@@ -4,9 +4,11 @@
             
             <% errors.forEach(err => { %>
                 <center>
-                    <li  class="errors"> <%= err.msg %> </li>
+                    <li  class="errors"> <%= err.msg || errors %> </li>
                 </center>
             <% }) %>
+            
+            
             
         </ul>
     </div>

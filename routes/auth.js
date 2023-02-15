@@ -10,12 +10,13 @@ const app = express()
 const authController = require('../controllers/authController')
 const authValidator = require('../validators/authValidator')
 
-/* router.use((req,res,next)=>{
+
+router.use((req,res,next)=>{
     if(req.isAuthenticated()){
         return res.redirect('/dashboard')
     }
     next()
-}) */
+})
 
 
 router.get('/login', authController.loginForm)

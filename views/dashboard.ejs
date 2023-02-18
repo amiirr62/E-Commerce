@@ -22,6 +22,17 @@
     <a href="/auth/register"style="color:deeppink">Register </a>
    
     <h1 style="color: deeppink;text-transform: capitalize;">Hi <%= req.user.name %></h1>
-    
+    <img src="<%= req.user.img %>" style="width:100px ; border-radius : 50% ">
+
+    <form action="/dashboard/edituser" method="POST" enctype="multipart/form-data">
+        <input type="text" placeholder="name" name="name"  value="<%= req.user.name %>">
+        <input type="text" placeholder="LastName" name="lastName" value="<%= req.user.lastName %>">
+        <input type="text" placeholder="Birthday" name="birthday" value="<%= req.user.birthday %>">
+        <input type="text" placeholder="email" name="email" value="<%= req.user.email %>">
+        <input type="file" name="img">
+        <input type="submit" value="Update">
+
+    </form> 
+    <%- include('./components/validationErrors') -%>
 </body>
-</html>
+</html>  

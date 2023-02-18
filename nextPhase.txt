@@ -1,0 +1,4 @@
+Update and complete user-contact info in dashboard
+Upload picture for user
+
+add address to userModel in a embedded way

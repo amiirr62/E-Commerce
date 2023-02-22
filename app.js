@@ -10,6 +10,7 @@ const flash = require('connect-flash')
 const MongoStore = require('connect-mongo')
 
 
+
 const app = express()
 
 global.config = require('./config')
@@ -30,6 +31,8 @@ app.use(session({
             store   : MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/Ecommerce' })
            
 }}))
+
+
 
 app.use(flash())  
 

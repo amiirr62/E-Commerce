@@ -2,6 +2,9 @@ const express = require('express')
 const User = require('../models/users')
 const passport = require('passport')
 const { body, validationResult } = require('express-validator')
+const Recaptcha = require('express-recaptcha').RecaptchaV2
+const options = { hl: 'en' }
+const recaptcha = new Recaptcha('6LfeXaIkAAAAAPDH3rdD2G_ILv4rbD4MTXeHqg_D', '6LfeXaIkAAAAAO_dVdUZsEOIMQzr6BQA9O7RzyZj', options)
 
 
 
@@ -13,7 +16,7 @@ class authController {
     async signUpForm(req,res,next){
         try {
             
-            return res.render('auth/signUp')
+            return res.render('auth/signUp', {recaptcha : recaptcha.render()})
         } catch (err) {
             next(err)
         }
@@ -31,7 +34,21 @@ class authController {
 //************************************** SIGN UP **************************************** */
     async signUp(req,res,next){
         try {
-            
+                let recaptchaResult = await new Promise((resolve,reject)=>{
+                    recaptcha.verify(req,(err,data)=>{
+                        if(err){
+                            req.flash('errors','CHeckmark ')
+                            res.redirect('/auth/signUp')
+                            resolve(false)
+                        }else{
+                            resolve(true)
+                        }
+                    })
+                })
+
+                if(!recaptchaResult){
+                    return
+                }
                 
                 const errors = validationResult(req)
                 if (!errors.isEmpty()) {

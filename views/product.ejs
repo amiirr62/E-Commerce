@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+        body {
+            background-image: url('/pics/products.jpg');
+        }
+    </style>
+    <link rel="stylesheet" href="/css/user.css">
+    <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+
+<body>
+    <a href="/products">Back</a>
+    
+    <h1 style="background-color: orange;color: black; display: table;"> <%= product.name %>  <%= product.description %></h1>
+    
+    
+        <form action="/products/<%= product.id %>?method=PUT" method="POST">
+            <input type="text" placeholder="id" name="id" value="<%= product.id %>">
+            <input type="number" placeholder="UPI" name="UPI" value="<%= product.UPI %>">
+            <input type="text" placeholder="name" name="name" value="<%= product.name %>">
+            <input type="text" placeholder="department" name="department" value="<%= product.department %>">
+            <input type="number" placeholder="price" name="price" value="<%= product.price %>">
+            <input type="text" placeholder="description" name="description" value="<%= product.description %>">
+            <input type="submit" value="Update">
+                  
+        </form>
+        
+</body>

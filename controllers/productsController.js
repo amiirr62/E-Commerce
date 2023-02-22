@@ -8,12 +8,26 @@ class productController {
 
     async showProducts(req,res,next){
         try {
-            res.render('products')
+            let products = await Product.find({})
+
+            res.render('products', {products : products , 
+                                    title : 'All Products', 
+                                    errors : req.flash('errors') , 
+                                    message : req.flash('message')})
         } catch (error) {
             next(error)
         }
     }
 
+    async seeOneProduct(req,res,next){
+        try {
+            let product = await Product.findById({_id : req.params.id})
+        
+            res.render('product',{product:product}) 
+        } catch (err) {
+            next(err)
+        }
+    }
 
    async  addProduct (req,res,next){
     try {
@@ -45,6 +59,32 @@ class productController {
             
         
     }
+
+    async deleteProduct(req,res,next){
+       
+            try {
+                await Product.deleteOne({_id : req.params.id})
+                req.flash('message','User successfully Deleted!!') 
+                return res.redirect('/products')
+            } catch (err) {
+                next(err)
+            }
+        
+    }
+
+    async updateProduct(req,res,next){
+
+        try {
+          await Product.updateMany({_id : req.params.id}, {$set : req.body})
+  
+          req.flash('message','User successfully updated!!') 
+          
+          return res.redirect('/products')
+        } catch (err) {
+          next(err)
+        }
+  
+      }
 }
 
 module.exports = new productController

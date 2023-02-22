@@ -1,4 +1,2 @@
-Update and complete user-contact info in dashboard
-Upload picture for user
-
-add address to userModel in a embedded way
+Implement CRUD API for Product Page
+Rest of video

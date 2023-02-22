@@ -15,7 +15,13 @@ router.use((req,res,next)=>{
 
 router.get('/', productController.showProducts)
 
+router.get('/:id',productController.seeOneProduct) 
+
 router.post('/',productsValidator.products(),productController.addProduct)
+
+router.delete('/:id',productController.deleteProduct)
+
+router.put('/:id',productsValidator.products(),productController.updateProduct)
     
 
 

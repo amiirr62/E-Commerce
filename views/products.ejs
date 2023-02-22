@@ -19,7 +19,6 @@
     <a href="/dashboard">dashboard | </a>
     <a href="/logout">logout | </a>
 
-    <h3 style="color: black;text-transform: capitalize; background-color: pink;display: table;">Hi <%= req.user.name %>, Welcome back!</h3>
     <form action="/products" method="POST">
         <input type="number" placeholder="UPI" name="UPI">
         <input type="text" placeholder="name" name="name">
@@ -35,6 +34,50 @@
         <input type="submit" value="Add Product">
     </form>
     
+    <% if(errors.length){ %>
+        <div>
+            <ul>
+                
+                <% errors.forEach(err => { %>
+                    <li  class="errors"> <%= err.msg %> </li>
+                <% }) %>
+                
+            </ul>
+        </div>
+    <% } %>
+    
+    <% if (message){ %>
+        <h4><%= message %></h4>
+    <% } %>
+    <table>
+        <thead>
+            <tr>
+                <th>UPI</th>
+                <th>name</th>
+                <th>department</th>
+                <th>price</th>
+                <th>description</th>
+                <th>operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(p => { %>
+                <tr>
+                    <td><%= p.UPI %></td>
+                    <td><%= p.name %></td>
+                    <td><%= p.department %></td>
+                    <td><%= p.price %></td>
+                    <td><%= p.description %></td>
+                    <td>
+                        <form action="/products/<%= p.id %>?method=DELETE" method="POST" >
+                            <input type="submit" value="Delete">
+                        </form>
+                        <a href="/products/<%= p.id %>">Update</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 
     <%- include('./components/validationErrors') -%>
 </body>
